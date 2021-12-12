@@ -10,7 +10,13 @@ class CMFCExam01Dlg : public CDialogEx
 {
 // 생성입니다.
 private:
+	//원형, 네모 그리기
 	CPoint rect_start_pos;
+	//키보드의 방향키로 이동
+	CRect m_rect;
+	int x_pos = 0, y_pos = 0;
+	//랜덤색
+	
 public:
 	CMFCExam01Dlg(CWnd* pParent = nullptr);	// 표준 생성자입니다.
 
@@ -35,4 +41,5 @@ protected:
 public:
 	afx_msg void OnLButtonDown(UINT nFlags, CPoint point);
 	afx_msg void OnLButtonUp(UINT nFlags, CPoint point);
+	afx_msg void OnHotKey(UINT nHotKeyId, UINT nKey1, UINT nKey2);
 };

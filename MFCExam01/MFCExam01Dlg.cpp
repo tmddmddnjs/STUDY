@@ -8,6 +8,9 @@
 #include "MFCExam01Dlg.h"
 #include "afxdialogex.h"
 
+#include <cstdlib>
+#include <ctime>
+
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
@@ -33,6 +36,7 @@ BEGIN_MESSAGE_MAP(CMFCExam01Dlg, CDialogEx)
 	ON_WM_QUERYDRAGICON()
 	ON_WM_LBUTTONDOWN()
 	ON_WM_LBUTTONUP()
+	ON_WM_HOTKEY()
 END_MESSAGE_MAP()
 
 
@@ -47,7 +51,11 @@ BOOL CMFCExam01Dlg::OnInitDialog()
 	SetIcon(m_hIcon, TRUE);			// 큰 아이콘을 설정합니다.
 	SetIcon(m_hIcon, FALSE);		// 작은 아이콘을 설정합니다.
 
-	// TODO: 여기에 추가 초기화 작업을 추가합니다.
+	//방향키로 네모 이동
+	RegisterHotKey(m_hWnd, 15000, 0, VK_UP);
+	RegisterHotKey(m_hWnd, 15001, 0, VK_RIGHT);
+	RegisterHotKey(m_hWnd, 15002, 0, VK_DOWN);
+	RegisterHotKey(m_hWnd, 15003, 0, VK_LEFT);
 
 	return TRUE;  // 포커스를 컨트롤에 설정하지 않으면 TRUE를 반환합니다.
 }
@@ -58,10 +66,9 @@ BOOL CMFCExam01Dlg::OnInitDialog()
 
 void CMFCExam01Dlg::OnPaint()
 {
+	CPaintDC dc(this); // 그리기를 위한 디바이스 컨텍스트입니다.
 	if (IsIconic())
 	{
-		CPaintDC dc(this); // 그리기를 위한 디바이스 컨텍스트입니다.
-
 		SendMessage(WM_ICONERASEBKGND, reinterpret_cast<WPARAM>(dc.GetSafeHdc()), 0);
 
 		// 클라이언트 사각형에서 아이콘을 가운데에 맞춥니다.
@@ -77,7 +84,16 @@ void CMFCExam01Dlg::OnPaint()
 	}
 	else
 	{
-		CDialogEx::OnPaint();
+		srand(time(NULL));
+		int r = rand() % 255;
+		int g = rand() % 255;
+		int b = rand() % 255;
+		CPen my_pen(PS_SOLID, 5, RGB(r,g,b));
+		dc.SelectObject(&my_pen);
+		SelectObject(dc, GetStockObject(NULL_BRUSH));
+		//시작하자마자 화면에 미리 네모 만들어 두기
+		m_rect.SetRect(50 + x_pos, 50 + y_pos, 100 + x_pos, 100 + y_pos);
+		dc.Rectangle(m_rect);
 	}
 }
 
@@ -123,4 +139,26 @@ void CMFCExam01Dlg::OnLButtonUp(UINT nFlags, CPoint point)
 		dc.Rectangle(rect_start_pos.x, rect_start_pos.y, point.x, point.y);
 	}
 	CDialogEx::OnLButtonUp(nFlags, point);
+}
+
+
+void CMFCExam01Dlg::OnHotKey(UINT nHotKeyId, UINT nKey1, UINT nKey2)
+{
+	CClientDC dc(this);
+	
+	if (nHotKeyId == 15000) {
+		y_pos -= 10;
+	}
+	else if (nHotKeyId == 15001) {
+		x_pos += 10;
+	}
+	else if (nHotKeyId == 15002) {
+		y_pos += 10;
+	}
+	else if (nHotKeyId == 15003) {
+		x_pos -= 10;
+	}
+	//잔상이 남기 때문에 화면 깨끗이 만듬
+	InvalidateRect(CRect(0, 0, 500, 500));
+	CDialogEx::OnHotKey(nHotKeyId, nKey1, nKey2);
 }
