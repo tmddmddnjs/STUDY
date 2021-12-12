@@ -8,6 +8,8 @@
 
 ![불러오기](https://user-images.githubusercontent.com/71477375/145710061-1db2666b-b49e-411a-a42f-fdbea4f28cc3.PNG)
 
+<h3>회전 버튼 클릭시 에러남 - 수정중</h3>
+
 <h3>반전 버튼 클릭 시</h3>
 
 ![반전](https://user-images.githubusercontent.com/71477375/145710062-513ec817-7c66-43ea-bf05-396599f9f4f4.PNG)
