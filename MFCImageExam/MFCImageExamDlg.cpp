@@ -37,6 +37,9 @@ BEGIN_MESSAGE_MAP(CMFCImageExamDlg, CDialogEx)
 	ON_BN_CLICKED(IDC_BUTTON4, &CMFCImageExamDlg::OnBnClickedButton4)
 	ON_WM_GETMINMAXINFO()
 	ON_BN_CLICKED(IDC_BUTTON5, &CMFCImageExamDlg::OnBnClickedButton5)
+	ON_BN_CLICKED(IDC_BUTTON6, &CMFCImageExamDlg::OnBnClickedButton6)
+	ON_BN_CLICKED(IDC_BUTTON7, &CMFCImageExamDlg::OnBnClickedButton7)
+	ON_BN_CLICKED(IDC_BUTTON8, &CMFCImageExamDlg::OnBnClickedButton8)
 END_MESSAGE_MAP()
 
 
@@ -66,6 +69,7 @@ BOOL CMFCImageExamDlg::OnInitDialog()
 	m_image2.Create(m_image.GetWidth() * 2, m_image.GetHeight() * 2, m_image.GetBPP(), 0);
 	m_image3.Create(m_image.GetWidth() * 3, m_image.GetHeight() * 3, m_image.GetBPP(), 0);
 	CClientDC dc(this);
+
 	int h = m_image.GetHeight();
 	int w = m_image.GetWidth();
 	int rate_2 = 2;//2배
@@ -89,6 +93,15 @@ BOOL CMFCImageExamDlg::OnInitDialog()
 
 	//색반전
 	invert_image.Create(m_image.GetWidth(), m_image.GetHeight(), m_image.GetBPP(), 0);
+
+	//이미지 45도 회전
+	rotation_image.Create(m_image.GetWidth(), m_image.GetHeight(), m_image.GetBPP(), 0);
+
+	//RGB 색 분리
+	m_r_image.Create(m_image.GetWidth(), m_image.GetHeight(), m_image.GetBPP(), 0);
+	m_g_image.Create(m_image.GetWidth(), m_image.GetHeight(), m_image.GetBPP(), 0);
+	m_b_image.Create(m_image.GetWidth(), m_image.GetHeight(), m_image.GetBPP(), 0);
+
 	return TRUE;  // 포커스를 컨트롤에 설정하지 않으면 TRUE를 반환합니다.
 }
 
@@ -207,4 +220,64 @@ void CMFCImageExamDlg::OnBnClickedButton5()
 	}
 	int b = m_image.GetHeight();
 	invert_image.Draw(dc, 10, b + 20);
+}
+
+//이미지 45도 회전
+void CMFCImageExamDlg::OnBnClickedButton6()
+{
+	CClientDC dc(this);
+	int h = m_image.GetHeight();
+	int w = m_image.GetWidth();
+	int degree = 45; //오른쪽 -45
+	int new_x, new_y, R, G, B;
+	int center_x = (m_image.GetWidth() / 2);
+	int center_y = (m_image.GetHeight() / 2);
+	double seta = 3.14 / (180.0 / degree); //라디안
+
+	for (int y = 0; y < h; y++)	{
+		for (int x = 0; x < w; x++){
+			new_x = (int)((x - center_x) * cos(seta) - (y - center_y) * sin(seta) + center_x);
+			new_y = (int)((x - center_x) * sin(seta) + (y - center_y) * cos(seta) + center_y);
+
+			if ((new_x < 0) || (new_x >= w) || (new_y < 0) || (new_y >= h)){
+				//이미지 범위를 벗어나면 0 값
+				R = G = B = 0;
+				//or continue;
+			}
+			else{
+				R = GetRValue(m_image.GetPixel(new_x, new_y));
+				G = GetGValue(m_image.GetPixel(new_x, new_y));
+				B = GetBValue(m_image.GetPixel(new_x, new_y));
+			}
+			rotation_image.SetPixel((int)x, (int)y, RGB(R, G, B));
+			new_x = 0; new_y = 0;
+		}
+	}
+
+	rotation_image.Draw(dc, 10, m_image.GetHeight() + 20); // 새로운 그림 그려준다.
+}
+
+//3원색 분리
+void CMFCImageExamDlg::OnBnClickedButton7()
+{
+	CClientDC dc(this);
+	int h = m_image.GetHeight();
+	int w = m_image.GetWidth();
+	for (int i = 0; i < h; i++) {
+		for (int j = 0; j < w; j++) {
+			COLORREF color = m_image.GetPixel(j, i);
+			m_r_image.SetPixel(j, i, RGB(GetRValue(color), 0, 0));
+			m_g_image.SetPixel(j, i, RGB(0, GetGValue(color), 0));
+			m_b_image.SetPixel(j, i, RGB(0, 0, GetBValue(color)));
+		}
+	}
+	m_r_image.Draw(dc, m_image.GetWidth() + 20, 10);
+	m_g_image.Draw(dc, 10, m_image.GetHeight()+20);
+	m_b_image.Draw(dc, m_image.GetWidth() + 20, m_image.GetHeight() + 20);
+}
+
+//화면 초기화
+void CMFCImageExamDlg::OnBnClickedButton8()
+{
+	Invalidate(TRUE);
 }

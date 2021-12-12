@@ -21,6 +21,10 @@ private:
 	CImage m_image3;
 	//이미지 색 반전
 	CImage invert_image;
+	//이미지 회전,45도
+	CImage rotation_image;
+	//RGB 빼기
+	CImage m_r_image, m_g_image, m_b_image;
 public:
 	CMFCImageExamDlg(CWnd* pParent = nullptr);	// 표준 생성자입니다.
 
@@ -49,4 +53,7 @@ public:
 	afx_msg void OnBnClickedButton4();
 	afx_msg void OnGetMinMaxInfo(MINMAXINFO* lpMMI);
 	afx_msg void OnBnClickedButton5();
+	afx_msg void OnBnClickedButton6();
+	afx_msg void OnBnClickedButton7();
+	afx_msg void OnBnClickedButton8();
 };
