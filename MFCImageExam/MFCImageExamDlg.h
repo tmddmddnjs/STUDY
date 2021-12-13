@@ -25,6 +25,8 @@ private:
 	CImage rotation_image;
 	//RGB 빼기
 	CImage m_r_image, m_g_image, m_b_image;
+	//이미지 열감지
+	CImage detect_heat;
 public:
 	CMFCImageExamDlg(CWnd* pParent = nullptr);	// 표준 생성자입니다.
 
@@ -56,4 +58,5 @@ public:
 	afx_msg void OnBnClickedButton6();
 	afx_msg void OnBnClickedButton7();
 	afx_msg void OnBnClickedButton8();
+	afx_msg void OnBnClickedButton9();
 };

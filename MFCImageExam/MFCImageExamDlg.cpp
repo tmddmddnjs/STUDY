@@ -40,6 +40,7 @@ BEGIN_MESSAGE_MAP(CMFCImageExamDlg, CDialogEx)
 	ON_BN_CLICKED(IDC_BUTTON6, &CMFCImageExamDlg::OnBnClickedButton6)
 	ON_BN_CLICKED(IDC_BUTTON7, &CMFCImageExamDlg::OnBnClickedButton7)
 	ON_BN_CLICKED(IDC_BUTTON8, &CMFCImageExamDlg::OnBnClickedButton8)
+	ON_BN_CLICKED(IDC_BUTTON9, &CMFCImageExamDlg::OnBnClickedButton9)
 END_MESSAGE_MAP()
 
 
@@ -101,6 +102,9 @@ BOOL CMFCImageExamDlg::OnInitDialog()
 	m_r_image.Create(m_image.GetWidth(), m_image.GetHeight(), m_image.GetBPP(), 0);
 	m_g_image.Create(m_image.GetWidth(), m_image.GetHeight(), m_image.GetBPP(), 0);
 	m_b_image.Create(m_image.GetWidth(), m_image.GetHeight(), m_image.GetBPP(), 0);
+
+	//열감지
+	detect_heat.Create(m_image.GetWidth(), m_image.GetHeight(), m_image.GetBPP(), 0);
 
 	return TRUE;  // 포커스를 컨트롤에 설정하지 않으면 TRUE를 반환합니다.
 }
@@ -280,4 +284,42 @@ void CMFCImageExamDlg::OnBnClickedButton7()
 void CMFCImageExamDlg::OnBnClickedButton8()
 {
 	Invalidate(TRUE);
+}
+
+//열감지
+void CMFCImageExamDlg::OnBnClickedButton9()
+{
+	CClientDC dc(this);
+
+	COLORREF temp_color;
+
+	int gray;
+	int x, y, i;
+
+	for (y = 0; y < m_image.GetHeight(); y++) {
+		for (x = 0; x < m_image.GetWidth(); x++) {
+
+			temp_color = m_image.GetPixel(x, y);
+			gray = (GetRValue(temp_color) + GetGValue(temp_color) + GetBValue(temp_color)) / 3;
+			/*
+			빨(255,0,0)
+			노(255,255,0)
+			초(0,255,0)
+			파(0,0,255)
+			*/
+			if (195 < gray && gray <= 255) {
+				detect_heat.SetPixel(x, y, RGB(255, (gray - 255) * (-4), 0));
+			}
+			else if (135 < gray && gray <= 195) {
+				detect_heat.SetPixel(x, y, RGB((gray - 135) * 4, 255, 0));
+			}
+			else if (75 < gray && gray <= 135) {
+				detect_heat.SetPixel(x, y, RGB(0, 255, (gray - 135) * (-4)));
+			}
+			else if (15 < gray && gray <= 75) {
+				detect_heat.SetPixel(x, y, RGB(0, (gray - 15) * 4, 255));
+			}
+		}
+	}
+	detect_heat.Draw(dc, 10, m_image.GetHeight() + 20);
 }
