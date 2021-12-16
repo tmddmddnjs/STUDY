@@ -1,56 +1,17 @@
-#include <mysql.h>	//안되면 #include <mysql/mysql.h> 둘다 시도해본다.
+#include <mysql.h>	
 #include <stdio.h>
 #pragma comment (lib, "libmysql.lib")
 
-/*
-<<<<<<< HEAD
-define���� �����ͺ��̽� �̸� ��� �� ��� �ǰ� �Ʒ����� ��� ��
-���⼭�� ���������� ������ �ø�
-=======
-define으로 데이터베이스 이름 비번 등 적어도 되고 아래에서 적어도 됨
-여기서는 개인정보라 지워서 올림
->>>>>>> e79f56324b0d34e2be3151bc4c7dfa03a73ec24a
-*/
-
-//void loadmysql(const char mysqlip[], MYSQL* cons) {	//MYSQL 서버 불러오기
-//	if (cons == NULL) //cons가 초기화를 못했으면
-//	{
-//		fprintf(stderr, "%s\n", mysql_error(cons));		//에러 프린트, printf("%s")와 같음
-//		Sleep(1000);
-//		exit(1);
-//	}
-//	if (!(mysql_real_connect(cons, mysqlip, MYSQLUSER, MYSQLPASSWORD, NULL, 0, NULL, 0) == NULL)) //mysql서버로 연결 성공하면 0 아니면 다른수 반환
-//	{
-//		printf("성공\n");
-//		mysql_set_character_set(cons, "euckr");				//MySQL 문자를 지정한다. 만약 안하면 한글이 짤림.
-//	}
-//	else {
-//		fprintf(stderr, "연결 오류 : %s\n", mysql_error(cons));
-//		getchar();
-//	}
-//	return;
-//}
-
 int main(void) {
-	MYSQL* cons = mysql_init(NULL);				//MYSQL 연결 초기화.
+	MYSQL* cons = mysql_init(NULL);				
 	mysql_real_connect(cons, "localhost", MYSQLUSER, MYSQLPASSWORD, NULL, 0, NULL, 0);
 	mysql_set_character_set(cons, "euckr");
 	mysql_query(cons, "SELECT * FROM opentutorials.topic");
 	MYSQL_RES* result = mysql_store_result(cons);
-	//한 row(레코드)안의 속성(필드)의 개수를 셈
 	int num_fields = mysql_num_fields(result);
 	MYSQL_ROW row;
-
-	/*
-	row전체가 끌날 때까지
-	5개의 row면 5번 돔
-	*/
 	while (row = mysql_fetch_row(result))
 	{
-		/*
-		한 row 안의 속성만큼
-		row안의 id title name등을 가져옴
-		*/
 		for (int i = 0; i < num_fields; i++)
 		{
 			printf("%s ", row[i] ? row[i] : "NULL");
