@@ -30,4 +30,8 @@
 
 ![화면 초기화](https://user-images.githubusercontent.com/71477375/145720129-855f7756-9cab-4f21-854f-13a8681529c1.PNG)
 
+<h3>열감지 클릭 시</h3>
+
+![열감지](https://user-images.githubusercontent.com/71477375/145815611-3e97a09a-e2c1-4dad-84c8-c465023590be.PNG)
+
 출처 : https://jeak.tistory.com/2?category=827380
