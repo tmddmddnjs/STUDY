@@ -2,9 +2,10 @@
 #include <stdio.h>
 #pragma comment (lib, "libmysql.lib")
 
-#define MYSQLUSER "root"				//유저 이름
-#define MYSQLPASSWORD "Wjdtmdeo12@"		//비밀번호
-#define MYSQLIP "localhost"	
+/*
+define으로 데이터베이스 이름 비번 등 적어도 되고 아래에서 적어도 됨
+여기서는 개인정보라 지워서 올림
+*/
 
 //void loadmysql(const char mysqlip[], MYSQL* cons) {	//MYSQL 서버 불러오기
 //	if (cons == NULL) //cons가 초기화를 못했으면
