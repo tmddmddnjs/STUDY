@@ -4,7 +4,7 @@
 - MYSQL* cons = mysql_init(NULL);
 
 <h3>데이터 베이스 연결</h3>
-- mysql_real_connect(cons, "localhost", MYSQLUSER, MYSQLPASSWORD, NULL, 0, NULL, 0); 
+- mysql_real_connect(cons, MYSQLIP, MYSQLUSER, MYSQLPASSWORD, NULL, 0, NULL, 0); 
 
 <h3>이거 안하면 한국어 깨져서 나온다</h3>
 - mysql_set_character_set(cons, "euckr");
