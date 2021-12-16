@@ -27,3 +27,8 @@
 - 화면 
 
 - 열감지
+
+<h2>database</h2>
+- visual c++ 과 workbench연결
+
+- insert into
