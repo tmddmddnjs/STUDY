@@ -1,27 +1,17 @@
-<h1>공부중..</h1>
+<h2>connect database</h2>
 
-<h2>MFCExam01</h2>
-- MFC 모양
+<h3>MYSQL 연결 초기화</h3>
+- MYSQL* cons = mysql_init(NULL);
 
-- 원형
+<h3>데이터 베이스 연결</h3>
+- mysql_real_connect(cons, MYSQLIP, MYSQLUSER, MYSQLPASSWORD, NULL, 0, NULL, 0); 
 
-- 네모
+<h3>이거 안하면 한국어 깨져서 나온다</h3>
+- mysql_set_character_set(cons, "euckr");
 
-- 네모 움직이기
+<h3>query를 이용해 sql문을 사용</h3>
+- mysql_query(cons, "SELECT * FROM opentutorials.topic");
 
-<h2>MFCImageExam</h2>
-- MFC 이미지 활용
+<h3>데이터 베이스 내용 불러온 사진</h3>
 
-- 이미지 불러오기
-
-- 이미지 회전(수정중)
-
-- 이미지 확대
-
-- 이미지 반전
-
-- 이미지 45도 회전
-
-- 3원색 분리
-
-- 화면 
+![database](https://user-images.githubusercontent.com/71477375/146366052-6541457a-0823-4e1f-8500-b9c176b77ab8.PNG)
