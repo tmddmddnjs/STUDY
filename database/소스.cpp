@@ -1,49 +1,50 @@
-#include <mysql.h>	//¾ÈµÇ¸é #include <mysql/mysql.h> µÑ´Ù ½ÃµµÇØº»´Ù.
+#include <mysql.h>	//ì•ˆë˜ë©´ #include <mysql/mysql.h> ë‘˜ë‹¤ ì‹œë„í•´ë³¸ë‹¤.
 #include <stdio.h>
 #pragma comment (lib, "libmysql.lib")
 
-#define MYSQLUSER "root"				//À¯Àú ÀÌ¸§
-#define MYSQLPASSWORD "Wjdtmdeo12@"		//ºñ¹Ğ¹øÈ£
-#define MYSQLIP "localhost"	
+/*
+defineìœ¼ë¡œ ë°ì´í„°ë² ì´ìŠ¤ ì´ë¦„ ë¹„ë²ˆ ë“± ì ì–´ë„ ë˜ê³  ì•„ë˜ì—ì„œ ì ì–´ë„ ë¨
+ì—¬ê¸°ì„œëŠ” ê°œì¸ì •ë³´ë¼ ì§€ì›Œì„œ ì˜¬ë¦¼
+*/
 
-//void loadmysql(const char mysqlip[], MYSQL* cons) {	//MYSQL ¼­¹ö ºÒ·¯¿À±â
-//	if (cons == NULL) //cons°¡ ÃÊ±âÈ­¸¦ ¸øÇßÀ¸¸é
+//void loadmysql(const char mysqlip[], MYSQL* cons) {	//MYSQL ì„œë²„ ë¶ˆëŸ¬ì˜¤ê¸°
+//	if (cons == NULL) //consê°€ ì´ˆê¸°í™”ë¥¼ ëª»í–ˆìœ¼ë©´
 //	{
-//		fprintf(stderr, "%s\n", mysql_error(cons));		//¿¡·¯ ÇÁ¸°Æ®, printf("%s")¿Í °°À½
+//		fprintf(stderr, "%s\n", mysql_error(cons));		//ì—ëŸ¬ í”„ë¦°íŠ¸, printf("%s")ì™€ ê°™ìŒ
 //		Sleep(1000);
 //		exit(1);
 //	}
-//	if (!(mysql_real_connect(cons, mysqlip, MYSQLUSER, MYSQLPASSWORD, NULL, 0, NULL, 0) == NULL)) //mysql¼­¹ö·Î ¿¬°á ¼º°øÇÏ¸é 0 ¾Æ´Ï¸é ´Ù¸¥¼ö ¹İÈ¯
+//	if (!(mysql_real_connect(cons, mysqlip, MYSQLUSER, MYSQLPASSWORD, NULL, 0, NULL, 0) == NULL)) //mysqlì„œë²„ë¡œ ì—°ê²° ì„±ê³µí•˜ë©´ 0 ì•„ë‹ˆë©´ ë‹¤ë¥¸ìˆ˜ ë°˜í™˜
 //	{
-//		printf("¼º°ø\n");
-//		mysql_set_character_set(cons, "euckr");				//MySQL ¹®ÀÚ¸¦ ÁöÁ¤ÇÑ´Ù. ¸¸¾à ¾ÈÇÏ¸é ÇÑ±ÛÀÌ Â©¸².
+//		printf("ì„±ê³µ\n");
+//		mysql_set_character_set(cons, "euckr");				//MySQL ë¬¸ìë¥¼ ì§€ì •í•œë‹¤. ë§Œì•½ ì•ˆí•˜ë©´ í•œê¸€ì´ ì§¤ë¦¼.
 //	}
 //	else {
-//		fprintf(stderr, "¿¬°á ¿À·ù : %s\n", mysql_error(cons));
+//		fprintf(stderr, "ì—°ê²° ì˜¤ë¥˜ : %s\n", mysql_error(cons));
 //		getchar();
 //	}
 //	return;
 //}
 
 int main(void) {
-	MYSQL* cons = mysql_init(NULL);				//MYSQL ¿¬°á ÃÊ±âÈ­.
+	MYSQL* cons = mysql_init(NULL);				//MYSQL ì—°ê²° ì´ˆê¸°í™”.
 	mysql_real_connect(cons, "localhost", MYSQLUSER, MYSQLPASSWORD, NULL, 0, NULL, 0);
 	mysql_set_character_set(cons, "euckr");
 	mysql_query(cons, "SELECT * FROM opentutorials.topic");
 	MYSQL_RES* result = mysql_store_result(cons);
-	//ÇÑ row(·¹ÄÚµå)¾ÈÀÇ ¼Ó¼º(ÇÊµå)ÀÇ °³¼ö¸¦ ¼À
+	//í•œ row(ë ˆì½”ë“œ)ì•ˆì˜ ì†ì„±(í•„ë“œ)ì˜ ê°œìˆ˜ë¥¼ ì…ˆ
 	int num_fields = mysql_num_fields(result);
 	MYSQL_ROW row;
 
 	/*
-	rowÀüÃ¼°¡ ²ø³¯ ¶§±îÁö
-	5°³ÀÇ row¸é 5¹ø µ¼
+	rowì „ì²´ê°€ ëŒë‚  ë•Œê¹Œì§€
+	5ê°œì˜ rowë©´ 5ë²ˆ ë”
 	*/
 	while (row = mysql_fetch_row(result))
 	{
 		/*
-		ÇÑ row ¾ÈÀÇ ¼Ó¼º¸¸Å­
-		row¾ÈÀÇ id title nameµîÀ» °¡Á®¿È
+		í•œ row ì•ˆì˜ ì†ì„±ë§Œí¼
+		rowì•ˆì˜ id title nameë“±ì„ ê°€ì ¸ì˜´
 		*/
 		for (int i = 0; i < num_fields; i++)
 		{
