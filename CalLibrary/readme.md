@@ -16,4 +16,6 @@
 
 <h3>프로젝트와 같은 이름의 cpp파일 생성</h3>
 
+헤더와 DLL프로젝트로 생성 시 기본적으로 만들어지는 pch.h도 같이 include해야 한다.
+
 ![cpp](https://user-images.githubusercontent.com/71477375/149172219-c51e560c-a25a-4bf4-a6aa-3eaea35060ad.PNG)
