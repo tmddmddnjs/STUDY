@@ -1,30 +1,19 @@
 #MFCExam01
 
-<h2>MFC를 이용한 네모와 원 그리기</h2>
+<h2>DLL을 만들기 위한 CalLibrary</h2>
 
-<h3>컨트롤을 누르면서 드래그 시 원형</h3>
-<h3>드래그만 하면 네모</h3>
+<h3>visual studio 2019기준</h3>
 
-![캡312321처](https://user-images.githubusercontent.com/71477375/145669789-929d34ac-a338-4d05-944a-8e7d929fbd5c.PNG)
+<h3>CalLibrary로 DLL프로젝트 생성</h3>
 
+![create](https://user-images.githubusercontent.com/71477375/149172209-8a52be67-2f1b-45b8-a9b4-1253e52ac25e.PNG)
 
-<h2>second 추가 내용</h3>
-- 클래스 마법사에서 HotKey추가하여서 방향키로 좌표 움직이기
+<h3>프로젝트와 같은 이름의 header파일 생성</h3>
 
-- 방향키를 이용한 네모 움직이기
+![header](https://user-images.githubusercontent.com/71477375/149172218-5faf6b9d-3841-4e35-903c-9d83d914c222.PNG)
 
-- 잔상없애기, InvalidateRect(CRect(0, 0, 500, 500));
+헤더파일 생성 시에 사진에 보이는 CALLIBRARY_API는 다른 이름이여도 프로젝트랑 같은 이름에 모두 통일시켜주는 것이 중요하다
 
-- rand함수로 색깔 랜덤으로 지정
+<h3>프로젝트와 같은 이름의 cpp파일 생성</h3>
 
-<h2>방향키를 이용한 네모 움직이기</h2>
-
-<h3>처음 시작하였을 때</h3>
-
-![기본](https://user-images.githubusercontent.com/71477375/145710646-53b29d3f-dbac-4aad-860c-737b22738741.PNG)
-
-<h3>방향키로 움직였을 때</h3>
-
-![움직인후](https://user-images.githubusercontent.com/71477375/145710647-97d6f85d-5944-45ba-a613-875170466269.PNG)
-
-출처 : https://jeak.tistory.com/2?category=827380
+![cpp](https://user-images.githubusercontent.com/71477375/149172219-c51e560c-a25a-4bf4-a6aa-3eaea35060ad.PNG)
