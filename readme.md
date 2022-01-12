@@ -40,3 +40,17 @@
 - delete
 
 - update
+
+<h2>Sort</h2>
+- 정렬 알고리즘 정리
+
+- bubble
+
+- quick
+
+<h2>CalLibrary</h2>
+- dll을 위한 디렉토리
+
+<h2>CalClient</h2>
+- CalLibrary내의 dll을 가져오기 위한 test Client
+- 
