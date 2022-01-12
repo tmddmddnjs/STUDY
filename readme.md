@@ -31,4 +31,12 @@
 <h2>database</h2>
 - visual c++ 과 workbench연결
 
+
+<h2>MFCListBoxExam</h2>
+- MFC Listbox with workbench
+
 - insert into
+
+- delete
+
+- update
