@@ -12,7 +12,8 @@
 
 ![header](https://user-images.githubusercontent.com/71477375/149172218-5faf6b9d-3841-4e35-903c-9d83d914c222.PNG)
 
-헤더파일 생성 시에 사진에 보이는 CALLIBRARY_API는 다른 이름이여도 프로젝트랑 같은 이름에 모두 통일시켜주는 것이 중요하다
+헤더파일 생성 시에 사진에 보이는 CALLIBRARY_API는 다른 이름이여도 상관 없지만 
+프로젝트랑 같은 이름에 모두 통일시켜주는 것이 중요하다
 
 <h3>프로젝트와 같은 이름의 cpp파일 생성</h3>
 
