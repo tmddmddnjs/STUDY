@@ -15,6 +15,10 @@
 #define new DEBUG_NEW
 #endif
 
+#define MYSQLIP "localhost"
+#define MYSQLUSER "root"
+#define MYSQLPASSWORD "Wjdtmdeo12@"
+
 CMFCListBoxExamDlg::CMFCListBoxExamDlg(CWnd* pParent /*=nullptr*/)
 	: CDialogEx(IDD_MFCLISTBOXEXAM_DIALOG, pParent)
 {
@@ -45,7 +49,6 @@ BEGIN_MESSAGE_MAP(CMFCListBoxExamDlg, CDialogEx)
 	ON_BN_CLICKED(IDC_BUTTON3, &CMFCListBoxExamDlg::OnBnClickedButton3)
 END_MESSAGE_MAP()
 
-
 // CMFCListBoxExamDlg 메시지 처리기
 MYSQL* cons = mysql_init(NULL);
 BOOL CMFCListBoxExamDlg::OnInitDialog()
@@ -56,7 +59,7 @@ BOOL CMFCListBoxExamDlg::OnInitDialog()
 	//  프레임워크가 이 작업을 자동으로 수행합니다.
 	SetIcon(m_hIcon, TRUE);			// 큰 아이콘을 설정합니다.
 	SetIcon(m_hIcon, FALSE);		// 작은 아이콘을 설정합니다.
-
+	//GetDlgItem(IDC_LIST1)->MoveWindow(10, 10, 100, 100);
 	mysql_real_connect(cons, MYSQLIP, MYSQLUSER, MYSQLPASSWORD, NULL, 0, NULL, 0);
 	mysql_set_character_set(cons, "euckr");
 	mysql_query(cons, "select * from opentutorials.c_test");
@@ -122,7 +125,6 @@ void CMFCListBoxExamDlg::OnBnClickedButton1()
 		strSql = "insert into opentutorials.c_test(id,col1,col2) values('%d','%s','%s')";
 		sprintf(query, strSql, text1, text2, text3);
 		mysql_query(cons, query);
-		m_listbox1.Invalidate();
 	}
 	catch (CException* e) {
 		SetDlgItemText(IDC_EDIT4, "에러남");
@@ -147,7 +149,6 @@ void CMFCListBoxExamDlg::OnBnClickedButton2()
 		//리스트를 선택하여 해당 위치의 인덱스를 지운다.
 		sprintf(query, strSql, strstr);
 		mysql_query(cons, query);
-		m_listbox1.Invalidate();
 	}
 	catch (CException* e) {
 		SetDlgItemText(IDC_EDIT4, "에러남");

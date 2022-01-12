@@ -1,0 +1,14 @@
+﻿  pch.cpp
+  CalLibrary.cpp
+C:\Users\msi\Desktop\새 폴더\공부중\코딩 연습\STUDY\CalLibrary\CalLibrary.cpp(4,23): warning C4273:  'Sum': dll 링크가 일치하지 않습니다.
+C:\Users\msi\Desktop\새 폴더\공부중\코딩 연습\STUDY\CalLibrary\CalLibrary.h(9,31): message :  'Sum'의 이전 정의를 참조하십시오.
+C:\Users\msi\Desktop\새 폴더\공부중\코딩 연습\STUDY\CalLibrary\CalLibrary.cpp(8,23): warning C4273:  'Sub': dll 링크가 일치하지 않습니다.
+C:\Users\msi\Desktop\새 폴더\공부중\코딩 연습\STUDY\CalLibrary\CalLibrary.h(10,31): message :  'Sub'의 이전 정의를 참조하십시오.
+C:\Users\msi\Desktop\새 폴더\공부중\코딩 연습\STUDY\CalLibrary\CalLibrary.cpp(15,23): warning C4273:  'Mul': dll 링크가 일치하지 않습니다.
+C:\Users\msi\Desktop\새 폴더\공부중\코딩 연습\STUDY\CalLibrary\CalLibrary.h(11,31): message :  'Mul'의 이전 정의를 참조하십시오.
+C:\Users\msi\Desktop\새 폴더\공부중\코딩 연습\STUDY\CalLibrary\CalLibrary.cpp(19,23): warning C4273:  'Div': dll 링크가 일치하지 않습니다.
+  dllmain.cpp
+  코드를 생성하고 있습니다...
+C:\Users\msi\Desktop\새 폴더\공부중\코딩 연습\STUDY\CalLibrary\CalLibrary.h(12,31): message :  'Div'의 이전 정의를 참조하십시오.
+     C:\Users\msi\Desktop\새 폴더\공부중\코딩 연습\STUDY\CalLibrary\Debug\CalLibrary.lib 라이브러리 및 C:\Users\msi\Desktop\새 폴더\공부중\코딩 연습\STUDY\CalLibrary\Debug\CalLibrary.exp 개체를 생성하고 있습니다.
+  CalLibrary.vcxproj -> C:\Users\msi\Desktop\새 폴더\공부중\코딩 연습\STUDY\CalLibrary\Debug\CalLibrary.dll
