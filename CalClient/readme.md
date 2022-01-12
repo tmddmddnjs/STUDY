@@ -16,7 +16,7 @@ CalLibrary의 폴더 경로(C:\Users\msi\Desktop\새 폴더\공부중\코딩 연
 
 CalLibrary의 폴더 경로(C:\Users\msi\Desktop\새 폴더\공부중\코딩 연습\STUDY\CalLibrary\$(IntDir))
 
-IntDir는 CalLibrary폴더안의 폴더(Debug)폴더를 말한다
+IntDir는 CalLibrary폴더안의 dll파일이 있는 폴더 여기서는 Debug폴더를 뜻한다
 
 ![2](https://user-images.githubusercontent.com/71477375/149174928-a89388a3-d1fc-4848-8597-cb23fe88f68e.PNG)
 
