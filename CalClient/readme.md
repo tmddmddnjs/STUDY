@@ -41,3 +41,16 @@ CalLibrary.lib 추가
 <h3>결과</h3>
 
 ![result](https://user-images.githubusercontent.com/71477375/149176657-583d4c36-18db-4b3c-a4db-105e5345cbbd.PNG)
+
+
+<h2>주의</h2>
+
+이 프로젝트는 같은 디렉토리에 배치가 체크되어 있는 상태인데 
+
+만약 같은 디렉토리에 배치가 아닌 사람들은 다음 경로에서 
+
+C:\Users\msi\Desktop\새 폴더\공부중\코딩 연습\STUDY\CalLibrary
+
+C:\Users\msi\Desktop\새 폴더\공부중\코딩 연습\STUDY\CalLibrary\CalLibrary로
+
+한 폴더 더 들어가서 경로를 설정해줘야 한다.
