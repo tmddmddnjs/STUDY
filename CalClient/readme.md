@@ -1,30 +1,27 @@
-#MFCExam01
+#CalClient
 
-<h2>MFC를 이용한 네모와 원 그리기</h2>
+<h2>CalLibaray에서 만들어진 dll을 사용하기 위한 CalClient</h2>
 
-<h3>컨트롤을 누르면서 드래그 시 원형</h3>
-<h3>드래그만 하면 네모</h3>
+<h3>visual studio 2019기준</h3>
 
-![캡312321처](https://user-images.githubusercontent.com/71477375/145669789-929d34ac-a338-4d05-944a-8e7d929fbd5c.PNG)
+<h3>CalClient라는 이름의 콘솔 앱 생성</h3>
 
+![create](https://user-images.githubusercontent.com/71477375/149174917-60c94be0-d86b-4c24-af91-2e1d4f519601.PNG)
 
-<h2>second 추가 내용</h3>
-- 클래스 마법사에서 HotKey추가하여서 방향키로 좌표 움직이기
+<h3>속성에서 경로를 설정해줘야 한다</h3>
 
-- 방향키를 이용한 네모 움직이기
+CalLibrary의 폴더 경로(C:\Users\msi\Desktop\새 폴더\공부중\코딩 연습\STUDY\CalLibrary)
 
-- 잔상없애기, InvalidateRect(CRect(0, 0, 500, 500));
+![1](https://user-images.githubusercontent.com/71477375/149174923-258e94e6-662b-4eea-8cc4-e1fda39e3dde.PNG)
 
-- rand함수로 색깔 랜덤으로 지정
+CalLibrary의 폴더 경로(C:\Users\msi\Desktop\새 폴더\공부중\코딩 연습\STUDY\CalLibrary\$(IntDir))
 
-<h2>방향키를 이용한 네모 움직이기</h2>
+IntDir는 CalLibrary폴더안의 폴더(Debug)폴더를 말한다
 
-<h3>처음 시작하였을 때</h3>
+![2](https://user-images.githubusercontent.com/71477375/149174928-a89388a3-d1fc-4848-8597-cb23fe88f68e.PNG)
 
-![기본](https://user-images.githubusercontent.com/71477375/145710646-53b29d3f-dbac-4aad-860c-737b22738741.PNG)
+CalLibrary.lib 추가
 
-<h3>방향키로 움직였을 때</h3>
+![3](https://user-images.githubusercontent.com/71477375/149174930-2f4c1c1a-460f-4a3f-8f53-349c4b048cc1.PNG)
 
-![움직인후](https://user-images.githubusercontent.com/71477375/145710647-97d6f85d-5944-45ba-a613-875170466269.PNG)
-
-출처 : https://jeak.tistory.com/2?category=827380
+위와 같이 설정 후 디버그를 해보면 dll이 없다는 에러 메시지가 나온다
