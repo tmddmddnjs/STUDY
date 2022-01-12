@@ -21,4 +21,4 @@
 
 ![cpp](https://user-images.githubusercontent.com/71477375/149172219-c51e560c-a25a-4bf4-a6aa-3eaea35060ad.PNG)
 
-<h3>마지막으로 빌드를 눌러주면 dll과 lib파일이 
+<h3>마지막으로 빌드를 눌러주면 dll과 lib파일이 생성된다
