@@ -25,3 +25,19 @@ CalLibrary.lib 추가
 ![3](https://user-images.githubusercontent.com/71477375/149174930-2f4c1c1a-460f-4a3f-8f53-349c4b048cc1.PNG)
 
 위와 같이 설정 후 디버그를 해보면 dll이 없다는 에러 메시지가 나온다
+
+이런 경우 해결법이 2가지가 있는데 
+
+<h3>해결법1 - dll이 있는 폴더의 경로 넣기</h3>
+
+![4](https://user-images.githubusercontent.com/71477375/149176659-5c1fb81f-008a-45e6-bdb2-43a542a71d7a.PNG)
+
+<h3>해결법2 - dll을 직접 Client폴더에 넣기</h3>
+
+![5](https://user-images.githubusercontent.com/71477375/149176649-fd0d9f77-52b7-4c85-87c2-7f80f0b2d5f4.PNG)
+
+위와 같은 방법으로 dll을 넣으면 디버그를 해 결과를 얻을 수 있다.
+
+<h3>결과</h3>
+
+![result](https://user-images.githubusercontent.com/71477375/149176657-583d4c36-18db-4b3c-a4db-105e5345cbbd.PNG)
